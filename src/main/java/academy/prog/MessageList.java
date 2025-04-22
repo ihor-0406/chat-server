@@ -1,5 +1,6 @@
 package academy.prog;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import com.google.gson.Gson;
@@ -23,7 +24,7 @@ public class MessageList {
 		list.add(m);
 	}
 	
-	public synchronized String toJSON(int n) {
+	public synchronized String toJSON(int n, String login) {
 		if (n < 0 || n >= list.size()) return null;
 		return gson.toJson(new JsonMessages(list, n));
 	}

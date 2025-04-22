@@ -12,6 +12,7 @@ public class GetListServlet extends HttpServlet {
     @Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		String fromStr = req.getParameter("from");
+		String login = req.getParameter("login");
 		int from = 0;
 		try {
 			from = Integer.parseInt(fromStr);
@@ -23,7 +24,7 @@ public class GetListServlet extends HttpServlet {
 
 		resp.setContentType("application/json");
 		
-		String json = msgList.toJSON(from);
+		String json = msgList.toJSON(from, login);
 		if (json != null) {
 			OutputStream os = resp.getOutputStream();
             byte[] buf = json.getBytes(StandardCharsets.UTF_8);
